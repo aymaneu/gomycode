@@ -1,56 +1,59 @@
-import { Route,Switch, Link } from "react-router-dom"
-import {useState} from 'react';
-import Home from './Components/Home'
-import Movies from './Components/Movies'
-import Movie from './Components/Movie'
-import "./App.css"
+import "./App.css";
+import Home from './Home/Home';
+import MovieContent from "./MovieContent/MovieContent";
+import NavBar from './NavBar/NavBar';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Trailer from "./Trailer/Trailer";
+import React,{useEffect, useState} from 'react';
+import { MovieContext } from "./Contexte/Context";
+import Dashboard from "./Dashboard/Dashboard";
+import SignIn from './Login/SignIn/SignIn'
+import SignUp from "./Login/SignUp/SignUp";
+import Reset from "./Login/Reset/Reset";
 
-const App = () => {
 
-    const [isAuth,setIsAuth] = useState(false)
-    const movies = [
-        {
-            id: 1,
-            title: 'The Dark Knight Rises',
-            description: 'Bane, an imposing terrorist, attacks Gotham City and disrupts its eight-year-long period of peace. This forces Bruce Wayne to come out of hiding and don the cape and cowl of Batman again.',
-            img: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg'
-        },
-    ]
 
-    const routes = [
-        {
-            path:'/',
-            main: () => <Home/>
-        },
-        {
-            path:'/movies',
-            main: () => <Movies data={movies}/>
-        },
-        {
-            path:'/movies/:movieId',
-            main: () => <Movie data={movies}/>
-        },
-     
-    ]
-return (
-        <>
-        <div className='links'>
-        <button><Link to='/'>Home</Link></button>
-        <button> <Link to='/movies'>Movies</Link></button>
-           </div>
-        
+
+function App() {
+  
+
+  
+  return (
+
     
-        <Switch>
-            {routes.map((route,index) => (
-                <Route 
-                    key={index}
-                    path={route.path}
-                    children={route.main}
-                    exact/>
-            ))}
-        </Switch>
-        </>
-    )
+
+    <Router>
+
+
+    <div className="App">
+       
+    
+     
+     <Switch>
+
+     <Route path='/Dashboard' component ={Dashboard}/>
+     
+      <div>
+      <NavBar/>
+     <Route path='/' component={Home} exact/>
+     <Route path='/MovieContent' component ={MovieContent}/>
+     <Route path='/Trailer' component ={Trailer}/>
+     <Route path='/SignIn' component ={SignIn}/>
+     <Route path='/SignUp' component ={SignUp}/>
+     <Route path="/ResetPassword" component={Reset}/>
+     </div>
+    
+     
+
+     </Switch>
+
+     
+
+    </div>
+    
+    </Router>
+
+  );
 }
 
-export default App
+export default App;

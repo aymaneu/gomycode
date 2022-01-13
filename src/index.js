@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
+import store from './Redux/Store/index';
+import {Provider} from 'react-redux';
+//import 'bootsrap/dist/css/bootsrap.css';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App/> 
-    </BrowserRouter>
+    <Provider store={store}>
+    <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
