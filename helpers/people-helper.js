@@ -27,10 +27,8 @@ module.exports = class PeopleHelper{
     static async creatNewPeople(data){
         try{
             const newPeople = {
-                //_id:mongoose.Schema.Types.ObjectId,
                 name:data.name,
                 age: data.age,
-                //image:data.image,
                 foodsfavorite:[data.foodsfavorite]
             }
             const creatingPeople = await new people(newPeople).save()
@@ -50,6 +48,8 @@ module.exports = class PeopleHelper{
             console.log(error)
         }
     }
+
+    //EDIT A YSER BY ID
     static async updatePeopleById(peopleId,data){
         try{
             const updatedPeople = await people.findByIdAndUpdate({_id: peopleId},

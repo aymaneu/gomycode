@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
- require('dotenv').config()
+
 const database = 'people'
+require('dotenv').config()
 
-
-const server = mongoose.connect(`mongodb://${MONGO_URI}/${database}`,{ useNewUrlParser: true, useUnifiedTopology: true })
+const server = mongoose.connect(`mongodb://${mongoURI}/${database}`,{ useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=> console.log('We are connected to the DB'))
 .catch(error => console.log('something happened', error))
 

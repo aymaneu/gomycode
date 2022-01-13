@@ -1,8 +1,6 @@
 const express = require('express')
 const app = express()
 
-const database = require('./server/db')
-const People = require('./models/people')
 const PeopleController=require('./controller/people-controller')
 
 app.use(express.json()),
@@ -19,6 +17,6 @@ app.post('/newPeople',PeopleController.newPeople)
 app.delete('/people/:id', PeopleController.deletePeople)
 app.put('/people/:id',PeopleController.updatePeople)
 
-app.listen(3000, ()=> {
-    console.log('Connected to http://localhost:3000')
+app.listen(3001, ()=> {
+    console.log('Connected to http://localhost:3001')
 })
